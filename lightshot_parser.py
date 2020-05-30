@@ -38,7 +38,7 @@ def download_image(url: str, folder_name: str) -> None:
     response = requests.get(url, verify=True, headers=headers, stream=True)
 
     if response.ok:
-        with open(f"{folder_name}\\{randint(10000)}.jpg", "bw") as file:
+        with open(f"{folder_name}\\{randint(1000, 10000)}.jpg", "bw") as file:
             for chunk in response.iter_content(4096):
                 file.write(chunk)
 
@@ -66,7 +66,7 @@ def main() -> None:
             ).lower() == "n":
                 exit()
 
-    folder_name = "parsed_images" + str(randint(100))
+    folder_name = "parsed_images" + str(randint(10, 100))
     os.mkdir(folder_name)
 
     for _ in range(value):
